@@ -7,13 +7,17 @@ from datetime import timedelta
 
 # === Load EEG Data ===
 eeg_df = pd.read_csv("EEG_recording_2025-07-07-23.38.37.csv")
+
+# === Load Markers  ===
+stim_df = pd.read_csv("oddball_task_data.csv")
+
+# EEG timestamps: convert Unix to datetime
 eeg_df['timestamps'] = pd.to_datetime(eeg_df['timestamps'], unit='s')
 eeg_df.set_index('timestamps', inplace=True)
 
-# === Load Markers and apply 4-hour UTC shift ===
-stim_df = pd.read_csv("oddball_task_data.csv")
-stim_df['Marker Timestamp'] = pd.to_datetime(stim_df['Marker Timestamp'])
-stim_df['Aligned Timestamp'] = stim_df['Marker Timestamp'] + timedelta(hours=4)
+# Stimulus timestamps: also convert Unix to datetime
+stim_df['Aligned Timestamp'] = pd.to_datetime(stim_df['Marker Timestamp'], unit='s')
+
 
 # === Normalize EEG Channels ===
 channels = [ch for ch in eeg_df.columns if ch != 'Right AUX']
