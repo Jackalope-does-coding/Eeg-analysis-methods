@@ -30,7 +30,7 @@ for i, ch in enumerate(channels):
 for _, row in stim_df.iterrows():
     ts = row['Aligned Timestamp']
     label = row['Stimulus']
-    color = 'red' if label == 'square' else 'blue'
+    color = 'blue'
     plt.axvline(x=ts, color=color, linestyle='--', alpha=0.6)
     plt.text(ts, offset + 5, label, rotation=90, fontsize=8, color=color)
 
