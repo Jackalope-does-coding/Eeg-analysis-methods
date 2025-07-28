@@ -5,14 +5,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import timedelta
 
-# Load EEG and stimulus data (assuming it's already preprocessed)
+# Load EEG and stimulus data
 eeg_df = pd.read_csv("EEG_recording_full.csv")
+stim_df = pd.read_csv("oddball_task_data.csv")
+
+# EEG timestamps: convert Unix to datetime
 eeg_df['timestamps'] = pd.to_datetime(eeg_df['timestamps'], unit='s')
 eeg_df.set_index('timestamps', inplace=True)
 
-stim_df = pd.read_csv("oddball_task_data.csv")
-stim_df['Marker Timestamp'] = pd.to_datetime(stim_df['Marker Timestamp'])
-stim_df['Aligned Timestamp'] = stim_df['Marker Timestamp'] + timedelta(hours=4)
+# Stimulus timestamps: also convert Unix to datetime
+stim_df['Aligned Timestamp'] = pd.to_datetime(stim_df['Marker Timestamp'], unit='s')
+
 
 # Normalize EEG (excluding auxiliary channel)
 channels = [ch for ch in eeg_df.columns if ch != 'Right AUX']
