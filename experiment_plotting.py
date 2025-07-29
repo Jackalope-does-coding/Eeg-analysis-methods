@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 from datetime import timedelta
 
 # === Load EEG Data ===
-eeg_df = pd.read_csv("EEG_recording_full.csv")
+eeg_df = pd.read_csv("EEG_recording_full.csv") #replace this text with the filepath to your egg csv
 
 # === Load Markers  ===
-stim_df = pd.read_csv("oddball_task_data.csv")
+stim_df = pd.read_csv("psychopy_data.csv") #replace this text with the filepath to your psychopy csv
 
 # EEG timestamps: convert Unix to datetime
 eeg_df['timestamps'] = pd.to_datetime(eeg_df['timestamps'], unit='s')
