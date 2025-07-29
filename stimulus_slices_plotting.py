@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from datetime import timedelta
 
 # Load EEG and stimulus data
-eeg_df = pd.read_csv("EEG_recording_full.csv")
-stim_df = pd.read_csv("oddball_task_data.csv")
+eeg_df = pd.read_csv("EEG_recording_full.csv") #replace this with the filepath to your eeg recording csv
+stim_df = pd.read_csv("psychopy_data.csv") #replace this with the filepath to your psychopy data csv
 
 # EEG timestamps: convert Unix to datetime
 eeg_df['timestamps'] = pd.to_datetime(eeg_df['timestamps'], unit='s')
