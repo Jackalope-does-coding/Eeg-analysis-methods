@@ -1,4 +1,4 @@
-# Eeg-analysis-methods
+# Muse-EEG-use-with-Psychopy
 
 Code created by Sandra Nitchi
 
